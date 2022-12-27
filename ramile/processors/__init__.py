@@ -23,6 +23,7 @@ class FileProcessorBase(object):
     def process(self, file):
         """ Processes a file and extracts lines out of it.
         """
+        print("open file: ", file.file_path)
         with io.open(file.file_path, 'r', encoding='utf-8') as open_file:
             last_line = None
             for original_line in open_file:
@@ -84,6 +85,7 @@ class FileProcessor(object):
         self.__cache_processor(SwiftProcessor())
         self.__cache_processor(OCProcessor())
         self.__cache_processor(GoProcessor())
+        self.__cache_processor(CSharpProcessor())
         return
 
     def __get_cached_processor(self, extension):
@@ -106,3 +108,4 @@ from ramile.processors.css_processor import CssProcessor
 from ramile.processors.swift_processor import SwiftProcessor
 from ramile.processors.oc_processor import OCProcessor
 from ramile.processors.go_processor import GoProcessor
+from ramile.processors.csharp_processor import CSharpProcessor
